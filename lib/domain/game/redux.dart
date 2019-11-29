@@ -35,11 +35,7 @@ final List<Middleware<AppState>> singleGameMiddleWare = [
   TypedMiddleware<AppState, GameActionOnUpdate>(_onUpdate()),
 ];
 
-void Function(
-  Store<AppState> store,
-  GameActionRequestNew action,
-  NextDispatcher next,
-) _onRequestNewGame() {
+MiddlewareF _onRequestNewGame() {
   return (store, action, next) async {
     final appState = store.state;
     final gameState = appState.currentState;
@@ -57,11 +53,7 @@ void Function(
   };
 }
 
-void Function(
-  Store<AppState> store,
-  GameActionTapOnBoard action,
-  NextDispatcher next,
-) _onTapOnBoard() {
+MiddlewareF _onTapOnBoard() {
   return (store, action, next) async {
     final appState = store.state;
     final gameState = appState.currentState;
@@ -80,11 +72,7 @@ void Function(
   };
 }
 
-void Function(
-  Store<AppState> store,
-  GameActionOnUpdate action,
-  NextDispatcher next,
-) _onUpdate() {
+MiddlewareF _onUpdate() {
   return (store, action, next) async {
     final state = store.state;
     final gameState = state.currentState;

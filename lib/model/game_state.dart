@@ -61,7 +61,8 @@ class GameState {
       (i) => isHrzTurn ? XY(x: i, y: y) : XY(x: x, y: i),
     )
         .map((p) => xy2i(p.x, p.y, board.rowSize))
-        .where((idx) => moves.contains(idx));
+        .where((idx) => !moves.contains(idx))
+        .toList();
   }
 
   @override

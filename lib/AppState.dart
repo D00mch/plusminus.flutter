@@ -4,9 +4,9 @@ import 'package:plusminus/model/game_state.dart';
 @immutable
 class AppState {
 
-  final GameState currentState;
+  final GameState state;
   final int currentRowSize;
-  final bool currentIsHrz;
+  final bool isUsrHrz;
 
   final AlertData alertData;
 
@@ -14,9 +14,9 @@ class AppState {
 
 
   const AppState({
-    @required this.currentState,
+    @required this.state,
     @required this.currentRowSize,
-    @required this.currentIsHrz,
+    @required this.isUsrHrz,
     @required this.alertData,
   });
 
@@ -26,27 +26,27 @@ class AppState {
       identical(this, other) ||
           (other is AppState &&
               runtimeType == other.runtimeType &&
-              currentState == other.currentState &&
+              state == other.state &&
               currentRowSize == other.currentRowSize &&
-              currentIsHrz == other.currentIsHrz &&
+              isUsrHrz == other.isUsrHrz &&
               alertData == other.alertData
           );
 
 
   @override
   int get hashCode =>
-      currentState.hashCode ^
+      state.hashCode ^
       currentRowSize.hashCode ^
-      currentIsHrz.hashCode ^
+      isUsrHrz.hashCode ^
       alertData.hashCode;
 
 
   @override
   String toString() {
     return 'AppState{' +
-        ' currentState: $currentState,' +
+        ' currentState: $state,' +
         ' currentRowSize: $currentRowSize,' +
-        ' currentIsHrz: $currentIsHrz,' +
+        ' currentIsHrz: $isUsrHrz,' +
         ' alertData: $alertData,' +
         '}';
   }
@@ -59,9 +59,9 @@ class AppState {
     AlertData alertData,
   }) {
     return new AppState(
-      currentState: currentState ?? this.currentState,
+      state: currentState ?? this.state,
       currentRowSize: currentRowSize ?? this.currentRowSize,
-      currentIsHrz: currentIsHrz ?? this.currentIsHrz,
+      isUsrHrz: currentIsHrz ?? this.isUsrHrz,
       alertData: alertData ?? this.alertData,
     );
   }
@@ -69,18 +69,18 @@ class AppState {
 
   Map<String, dynamic> toMap() {
     return {
-      'currentState': this.currentState,
+      'currentState': this.state,
       'currentRowSize': this.currentRowSize,
-      'currentIsHrz': this.currentIsHrz,
+      'currentIsHrz': this.isUsrHrz,
       'alertData': this.alertData,
     };
   }
 
   factory AppState.fromMap(Map<String, dynamic> map) {
     return new AppState(
-      currentState: map['currentState'] as GameState,
+      state: map['currentState'] as GameState,
       currentRowSize: map['currentRowSize'] as int,
-      currentIsHrz: map['currentIsHrz'] as bool,
+      isUsrHrz: map['currentIsHrz'] as bool,
       alertData: map['alertData'] as AlertData,
     );
   }

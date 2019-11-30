@@ -1,7 +1,8 @@
 import 'package:collection/collection.dart';
+import 'package:plusminus/domain/game/tea.dart';
 import 'package:plusminus/model/game_state.dart';
 
-// MOVE API
+/// **** Bot moves **** ///
 
 GameState predict(GameState state, int turnsAhead) {
   if (!state.anyMoves()) {
@@ -30,7 +31,7 @@ GameState moveBot(GameState state, {int prediction = 3}) {
   return state.move(mv);
 }
 
-// RESULT API
+/// **** Game results **** ///
 
 enum Result { WIN, LOSE, DRAW }
 
@@ -45,7 +46,18 @@ Result onGameEng(GameState state, bool isUsrHrz) {
   }
 }
 
-// IMPL
+String resultMessage(GameState gameState, GModel appState) {
+  final result = onGameEng(gameState, appState.isUsrHrz);
+  if (result == Result.LOSE) {
+    return "You lose";
+  } else if (result == Result.WIN) {
+    return "You win";
+  } else {
+    return "Draw";
+  }
+}
+
+/// **** implementation **** ///
 
 GameState _moveMax(GameState state) {
   int maxMove = maxBy(state.validMoves, (e) => state.moveVal(e));

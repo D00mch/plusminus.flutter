@@ -12,10 +12,8 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   collection:
-
-  # Redux dependencies
-  redux: ^3.0.0
-  flutter_redux: ^0.5.0
+  dartea:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:

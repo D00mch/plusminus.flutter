@@ -35,7 +35,7 @@ GameState moveBot(GameState state, {int prediction = 3}) {
 
 enum Result { WIN, LOSE, DRAW }
 
-Result onGameEng(GameState state, bool isUsrHrz) {
+Result resultCalculate(GameState state, bool isUsrHrz) {
   final int hrzP = state.hrzPoints;
   final int vrtP = state.vrtPoints;
   if (hrzP == vrtP) {
@@ -47,10 +47,10 @@ Result onGameEng(GameState state, bool isUsrHrz) {
 }
 
 String resultMessage(GameState gameState, GModel appState) {
-  final result = onGameEng(gameState, appState.isUsrHrz);
-  if (result == Result.LOSE) {
+  final r = resultCalculate(gameState, appState.isUsrHrz);
+  if (r == Result.LOSE) {
     return "You lose";
-  } else if (result == Result.WIN) {
+  } else if (r == Result.WIN) {
     return "You win";
   } else {
     return "Draw";

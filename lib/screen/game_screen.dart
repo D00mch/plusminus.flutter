@@ -7,7 +7,7 @@ import 'package:plusminus/model/game_state.dart';
 
 import '../router.dart';
 
-class BoardW extends StatelessWidget {
+class BoardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProgramWidget(

@@ -39,7 +39,7 @@ Upd<MenuModel, dynamic> menuUpdate(MenuModel model, msg, Router router) {
         case Menu.statistics:
           throw UnimplementedError();
         case Menu.policy:
-          throw UnimplementedError();
+          router.showPrivacyPolicy();
       }
     }));
   }

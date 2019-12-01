@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:plusminus/screen/game_screen.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class Router {
   final NavigatorState _navigator;
@@ -10,6 +11,12 @@ class Router {
 
   void showSinglePlayerGame() {
     _navigator.push(MaterialPageRoute(builder: (_) => GameScreen()));
+  }
+
+  void showPrivacyPolicy() {
+    _navigator.push(MaterialPageRoute(
+        builder: (_) =>
+            WebView(initialUrl: "https://plusminus.me/privacy-policy")));
   }
 
   void showToast(String msg) {

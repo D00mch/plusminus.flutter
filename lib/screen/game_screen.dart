@@ -8,12 +8,17 @@ import 'package:plusminus/model/game_state.dart';
 import '../router.dart';
 
 class GameScreen extends StatelessWidget {
+  final GModel model;
+
+  const GameScreen({Key key, @required this.model}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ProgramWidget(
-      init: () => gameInit(),
+      init: () => gameInit(model),
       update: (msg, model) => gameUpdate(model, msg, Router(context)),
       view: _view,
+      key: DarteaStorageKey('single'),
       withDebugTrace: true,
       withMessagesBus: true,
     );

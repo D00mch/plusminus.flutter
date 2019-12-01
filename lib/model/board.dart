@@ -30,7 +30,7 @@ class Board {
       identical(this, other) ||
       (other is Board &&
           runtimeType == other.runtimeType &&
-          cells == other.cells &&
+          listEq.equals(cells, other.cells) &&
           rowSize == other.rowSize);
 
   @override
@@ -53,7 +53,7 @@ class Board {
       };
 
   factory Board.fromMap(Map<String, dynamic> map) =>
-      new Board(map['cells'] as List<int>);
+      new Board(List<int>.from(map['cells']));
 
 //</editor-fold>
 }

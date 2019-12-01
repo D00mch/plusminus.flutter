@@ -75,7 +75,7 @@ class GameState {
           hrzPoints == other.hrzPoints &&
           vrtPoints == other.vrtPoints &&
           isHrzTurn == other.isHrzTurn &&
-          moves == other.moves);
+          listEq.equals(moves, other.moves));
 
   @override
   int get hashCode =>
@@ -118,7 +118,7 @@ class GameState {
 
   Map<String, dynamic> toMap() {
     return {
-      'board': this.board,
+      'board': this.board.toMap(),
       'start': this.start,
       'hrz-points': this.hrzPoints,
       'vrt-points': this.vrtPoints,
@@ -129,12 +129,12 @@ class GameState {
 
   factory GameState.fromMap(Map<String, dynamic> map) {
     return new GameState(
-      board: map['board'] as Board,
+      board: Board.fromMap(map['board']),
       start: map['start'] as int,
       hrzPoints: map['hrz-points'] as int,
       vrtPoints: map['vrt-points'] as int,
       isHrzTurn: map['hrz-turn'] as bool,
-      moves: map['moves'] as List<int>,
+      moves: List<int>.from(map['moves']),
     );
   }
 

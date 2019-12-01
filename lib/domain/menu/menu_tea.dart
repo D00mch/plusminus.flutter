@@ -1,5 +1,8 @@
 import 'package:dartea/dartea.dart';
+import 'package:plusminus/data/Storage.dart';
+import 'package:plusminus/domain/game/game_tea.dart';
 import 'package:plusminus/domain/tea.dart';
+import 'package:plusminus/model/game_state.dart';
 
 import '../../router.dart';
 
@@ -28,11 +31,20 @@ class MenuMsgTap implements UserAction {
 /// **** Update **** ///
 Upd<MenuModel, dynamic> menuUpdate(MenuModel model, msg, Router router) {
   if (msg is MenuMsgTap) {
-    return Upd(model, effects: Cmd.ofAction(() {
-      Menu menu = msg.menu;
+    final cmd = Cmd.ofAsyncAction(() async {
+      final menu = msg.menu;
       switch (menu) {
         case Menu.single:
-          router.showSinglePlayerGame();
+          GModel model = await stateGetSingleGame();
+          if (model == null) {
+            model = GModel(
+              gameType: GameType.single,
+              state: GameState.generate(5),
+              rowSize: 5,
+              isUsrHrz: true,
+            );
+          }
+          router.showSinglePlayerGame(model);
           break;
         case Menu.options:
           throw UnimplementedError();
@@ -41,7 +53,8 @@ Upd<MenuModel, dynamic> menuUpdate(MenuModel model, msg, Router router) {
         case Menu.policy:
           router.showPrivacyPolicy();
       }
-    }));
+    });
+    return Upd(model, effects: cmd);
   }
   return Upd(model);
 }

@@ -3,14 +3,16 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:plusminus/screen/game_screen.dart';
 import 'package:plusminus/screen/webview_screen.dart';
 
+import 'domain/game/game_tea.dart';
+
 class Router {
   final NavigatorState _navigator;
   final BuildContext _context;
 
   Router(this._context) : _navigator = Navigator.of(_context);
 
-  void showSinglePlayerGame() {
-    _navigator.push(MaterialPageRoute(builder: (_) => GameScreen()));
+  void showSinglePlayerGame(GModel model) {
+    _navigator.push(MaterialPageRoute(builder: (_) => GameScreen(model: model)));
   }
 
   void showPrivacyPolicy() {

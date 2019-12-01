@@ -15,8 +15,10 @@ dependencies:
   dartea:
   fluttertoast:
   webview_flutter: ^0.3.16
+  shared_preferences: ^0.5.4+6
 
 dev_dependencies:
+  test:
   flutter_test:
     sdk: flutter
 

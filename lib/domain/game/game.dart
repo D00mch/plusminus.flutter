@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:plusminus/domain/game/tea.dart';
+import 'package:plusminus/domain/game/game_tea.dart';
 import 'package:plusminus/model/game_state.dart';
 
 /// **** Bot moves **** ///
@@ -46,14 +46,15 @@ Result resultCalculate(GameState state, bool isUsrHrz) {
   }
 }
 
+// ignore: missing_return
 String resultMessage(GameState gameState, GModel appState) {
-  final r = resultCalculate(gameState, appState.isUsrHrz);
-  if (r == Result.LOSE) {
-    return "You lose";
-  } else if (r == Result.WIN) {
-    return "You win";
-  } else {
-    return "Draw";
+  switch (resultCalculate(gameState, appState.isUsrHrz)) {
+    case Result.WIN:
+      return "You win";
+    case Result.LOSE:
+      return "You lose";
+    case Result.DRAW:
+      return "Draw";
   }
 }
 

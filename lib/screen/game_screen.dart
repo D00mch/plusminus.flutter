@@ -1,20 +1,22 @@
 import 'package:dartea/dartea.dart';
 import 'package:flutter/material.dart';
-import 'package:plusminus/domain/game/tea.dart';
+import 'package:plusminus/domain/game/game_tea.dart';
 import 'package:plusminus/domain/tea.dart';
 import 'package:plusminus/model/board.dart';
 import 'package:plusminus/model/game_state.dart';
 
 import '../router.dart';
 
-class BoardScreen extends StatelessWidget {
+class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProgramWidget(
-        init: () => gameInit(),
-        update: (msg, model) => gameUpdate(model, msg, Router(context)),
-        view: _view,
-        withDebugTrace: true);
+      init: () => gameInit(),
+      update: (msg, model) => gameUpdate(model, msg, Router(context)),
+      view: _view,
+      withDebugTrace: true,
+      withMessagesBus: true,
+    );
   }
 }
 

@@ -1,6 +1,6 @@
 import 'package:dartea/dartea.dart';
 import 'package:flutter/material.dart';
-import 'package:plusminus/screen/game_screen.dart';
+import 'package:plusminus/screen/menu_screen.dart';
 
 void main() {
   return runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: BoardScreen(),
+        home: MenuScreen(),
       ),
     );
   }

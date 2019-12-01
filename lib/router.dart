@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:plusminus/screen/game_screen.dart';
 
 class Router {
   final NavigatorState _navigator;
   final BuildContext _context;
 
   Router(this._context) : _navigator = Navigator.of(_context);
+
+  void showSinglePlayerGame() {
+    _navigator.push(MaterialPageRoute(builder: (_) => GameScreen()));
+  }
 
   void showToast(String msg) {
     Fluttertoast.showToast(
